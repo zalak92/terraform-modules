@@ -93,7 +93,7 @@ resource "aws_subnet" "network_private_subnets" {
 ###########################
 resource "aws_eip" "network_nat_eip" {
   count = var.enable_nat && local.has_private ? 1 : 0
-  vpc   = true
+  domain = "vpc"
 
   tags = merge(var.tags, {
     Name = "${var.name_prefix}-nat-eip"
