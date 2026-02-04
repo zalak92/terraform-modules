@@ -4,15 +4,27 @@ variable "name" {
 }
 
 variable "ami_id" {
-  description = "AMI ID to use. If empty, Amazon Linux 2023 AMI will be looked up."
+  description = "Optional explicit AMI ID. If empty, an Amazon Linux 2023 AMI for the selected architecture will be looked up."
   type        = string
   default     = ""
+}
+
+variable "architecture" {
+  description = "CPU architecture for the AMI: arm64 (Graviton) or x86_64 (Intel/AMD)."
+  type        = string
+  default     = "arm64"
+  validation {
+    condition     = contains(["arm64", "x86_64"], var.architecture)
+    error_message = "architecture must be one of: arm64, x86_64"
+  }
 }
 
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.micro"
+  # Cheapest common options:
+  # arm64 --> t4g.nano ; x86 --> t3.nano
+  default     = "t4g.nano"
 }
 
 variable "subnet_id" {
@@ -48,6 +60,12 @@ variable "volume_size" {
   description = "Root EBS volume size in GiB"
   type        = number
   default     = 8
+}
+
+variable "user_data" {
+  description = "Optional user data script"
+  type        = string
+  default     = ""
 }
 
 variable "tags" {
