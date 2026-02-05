@@ -22,8 +22,6 @@ variable "architecture" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  # Cheapest common options:
-  # arm64 --> t4g.nano ; x86 --> t3.nano
   default     = "t4g.nano"
 }
 

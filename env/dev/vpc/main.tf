@@ -1,8 +1,8 @@
 module "network" {
-  source               = "../../../modules/vpc"
+  source = "../../../modules/vpc"
 
-  name_prefix          = local.name_prefix
-  tags                 = local.standard_tags
+  name_prefix = local.name_prefix
+  tags        = local.standard_tags
 
   vpc_cidr             = var.vpc_cidr
   azs                  = var.azs
