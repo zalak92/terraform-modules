@@ -2,7 +2,7 @@
 # AWS Provider settings
 # -------------------------
 region      = "ap-south-1"
-aws_profile = "default"
+aws_profile = "devvpc"
 
 
 # -------------------------
