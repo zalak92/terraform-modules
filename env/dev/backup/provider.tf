@@ -8,7 +8,7 @@ terraform {
   }
       backend "s3" {
     bucket         = "zalak-terraform-state"
-    key            = "aws/backupsces/ec2/terraform.tfstate"
+    key            = "aws/dev/backup/terraform.tfstate"
     region         = "ap-south-1"
     dynamodb_table = "terraform-lock"
     encrypt        = true

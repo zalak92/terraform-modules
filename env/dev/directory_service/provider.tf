@@ -9,7 +9,7 @@ terraform {
   }
     backend "s3" {
     bucket         = "zalak-terraform-state"
-    key            = "aws/directory_services/ec2/terraform.tfstate"
+    key            = "aws/dev/directory_service/terraform.tfstate"
     region         = "ap-south-1"
     dynamodb_table = "terraform-lock"
     encrypt        = true
